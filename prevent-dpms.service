@@ -1,0 +1,9 @@
+[Unit]
+Description=Prevent DPMS when sound is playing
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/prevent-dpms
+
+[Install]
+WantedBy=default.target

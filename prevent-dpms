@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Prevents X from activating the screensaver or sleeping the screen
+# while the system is outputting sound.
+#
+TIMEOUT=10
+DISPLAY=:0
+
+while true; do
+  sleep ${TIMEOUT}
+
+  # Find a PulseAudio sink with the 'RUNNING' state. 
+  RUNNING=$(/usr/bin/pactl list sinks short | grep RUNNING)
+  
+  # Alternative: Find an active sound output using wpctl (WirePlumber).
+  # RUNNING=$(wpctl status | grep active)
+  if [ -n "${RUNNING}" ]; then
+    # Reset DPMS timeout by toggling DPMS.
+    xset -dpms
+    xset +dpms
+  fi
+
+done

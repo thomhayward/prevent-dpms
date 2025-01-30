@@ -1,9 +1,9 @@
 pkgname=prevent-dpms
 pkgdesc="A systemd user service to prevent Display Power Management Signaling (DPMS) from activating when the system has an active sound output"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 arch=(any)
-depends=('libpulse')
+depends=('bash' 'libpulse')
 provides=("$pkgname")
 conflicts=("$pkgname")
 options=(!debug)

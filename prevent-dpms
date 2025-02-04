@@ -4,7 +4,7 @@
 # while the system is outputting sound.
 #
 TIMEOUT=10
-DISPLAY=:0
+X11_DISPLAY=:0
 
 while true; do
   sleep ${TIMEOUT}
@@ -16,8 +16,8 @@ while true; do
   # RUNNING=$(wpctl status | grep active)
   if [ -n "${RUNNING}" ]; then
     # Reset DPMS timeout by toggling DPMS.
-    xset -dpms
-    xset +dpms
+    xset -display ${X11_DISPLAY} -dpms
+    xset -display ${X11_DISPLAY} +dpms
   fi
 
 done
